@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter , Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Work from "./components/Work";
@@ -10,7 +10,7 @@ import PaintingDetail from "./components/PaintingDetail";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={
@@ -25,7 +25,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/gallery/:id" element={<PaintingDetail />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
