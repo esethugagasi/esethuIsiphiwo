@@ -61,12 +61,14 @@ export default function PaintingDetail() {
           </div>
           <div style={{ height: "1px", background: "#eee", marginBottom: "40px" }} />
           <div style={{ fontSize: "11px", letterSpacing: "1px", color: "#999", lineHeight: "2" }}>
-            Original painting · Mixed media
+            Original painting · Mixed media: Acrylic and beads on canvas
           </div>
 
           {/* Enquire button */}
           <button
-            onClick={() => navigate("/#contact")}
+  onClick={() => {
+    navigate("/", { state: { scrollTo: "contact" } });
+  }}
             style={{
               marginTop: "48px",
               fontSize: "10px",

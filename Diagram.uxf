@@ -1,0 +1,42 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notesr</help_text><element><id>Text</id><coordinates><x>250</x><y>60</y><w>290</w><h>660</h></coordinates><panel_attributes>Start
+  |
+  ▼
+Customer submits support request
+  |
+  ▼
+Receive query through Tawk
+  |
+  ▼
+Analyse customer query
+  |
+  ▼
+Search organisational knowledge
+  |
+  ▼
+Generate AI recommendation
+  |
+  ▼
+Support agent reviews recommendation
+  |
+  ▼
++-----------------------------+
+| Recommendation acceptable?  |
++-------------+---------------+
+              |
+      Yes     |      No
+              |
+      ▼       ▼
+Send response  Edit response
+      |             |
+      └──────┬──────┘
+             ▼
+Is issue resolved?
+      |
+ Yes  |  No
+      |
+      ▼
+Close request      Escalate issue
+      |                 |
+      └────────┬────────┘
+               ▼
+              End</panel_attributes><additional_attributes></additional_attributes></element></diagram>

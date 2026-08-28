@@ -3,13 +3,15 @@ import vacation from "../vacation.jpeg";
 import world from "../world.jpeg";
 import sip from "../oceanSip.jpeg";
 import kitchen from "../kitchen.jpeg";
+import sunset from "../firstone.jpeg";
 import { useState } from "react";
 
 export const PAINTINGS = [
-  { id: 1, image: vacation, title: "Vacation" },
-  { id: 2, image: world, title: "World" },
-  { id: 3, image: sip, title: "Ocean Sip" },
-  { id: 4, image: kitchen, title: "Kitchen" },
+  { id: 1, image: vacation, title: "A safe space" },
+  { id: 2, image: world, title: "The world is yours" },
+  { id: 3, image: sip, title: "Time to self" },
+  { id: 4, image: kitchen, title: "The apartment" },
+  { id: 5, image: sunset, title: "Sunset" },
 ];
 
 export default function Gallery() {
@@ -27,7 +29,7 @@ export default function Gallery() {
     <div style={{ paddingTop: "120px", paddingBottom: "80px", background: "#f5f5f5", minHeight: "100vh" }}>
       
       {/* Header */}
-      <div style={{ padding: "0 40px 60px", fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: "#aaa" }}>
+      <div style={{ padding: "0 30px 30px", fontSize: "10px", letterSpacing: "4px", textTransform: "uppercase", color: "#aaa" }}>
         Gallery Tour
       </div>
 

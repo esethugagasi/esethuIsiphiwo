@@ -1,4 +1,4 @@
-import journal1 from "../journal.mp4";
+import journal1 from "../MicrosoftTeams-video (10).mp4";
 
 
 export default function Journal() {

@@ -1,4 +1,5 @@
-import { HashRouter , Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation, HashRouter} from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Work from "./components/Work";
@@ -8,10 +9,31 @@ import About from "./components/About";
 import Gallery from "./components/Gallery";
 import PaintingDetail from "./components/PaintingDetail";
 
+function ScrollToSection() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: "smooth",
+          });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  return null;
+}
+
 function App() {
   return (
     <HashRouter>
       <Navbar />
+      <ScrollToSection />
       <Routes>
         <Route path="/" element={
           <>

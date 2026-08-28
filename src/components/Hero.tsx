@@ -1,6 +1,6 @@
 import footsteps from "../footsteps.png";
-// import landingVideo from "../page1.mp4";
-import front from "../frontPage.png"; 
+import landingVideo from "../herovid.mp4";
+// import front from "../frontPage.png"; 
 
 export default function Hero() {
   return (
@@ -11,7 +11,7 @@ export default function Hero() {
       }}
     >
       {/* VIDEO */}
-      {/* <div style={{ width: "50%", overflow: "hidden" }}>
+      <div style={{ width: "50%", overflow: "hidden" }}>
         <video
           src={landingVideo}
           autoPlay
@@ -24,10 +24,10 @@ export default function Hero() {
             objectFit: "cover"
           }}
         />
-      </div> */}
+      </div>
 
       {/* IMAGE */}
-      <div style={{ width: "50%", overflow: "hidden" }}>
+      {/* <div style={{ width: "50%", overflow: "hidden" }}>
         <img
           src={front}
           style={{
@@ -36,7 +36,7 @@ export default function Hero() {
             objectFit: "cover"
           }}
         />
-      </div>
+      </div> */}
 
       {/* IMAGE */}
       <div style={{ width: "50%", overflow: "hidden" }}>

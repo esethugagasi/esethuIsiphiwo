@@ -1,4 +1,4 @@
-import storyVideo from "../IMG_3188.mp4";
+import storyVideo from "../intro.mp4";
 
 export default function About() {
   return (

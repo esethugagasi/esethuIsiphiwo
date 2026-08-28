@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/navbar.css";
 
 const NAV_LINKS = [
   { label: "About", path: "/about", sectionId: null },
@@ -8,9 +9,9 @@ const NAV_LINKS = [
   { label: "Contact", path: null, sectionId: "contact" },
 ];
 
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,37 +30,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      style={{
-        position: "fixed",
-        top: 0,
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "25px 40px",
-        fontSize: "12px",
-        letterSpacing: "1px",
-        zIndex: 1000,
-        background: scrolled ? "transparent" : "#ffffff",
-        color: scrolled ? "#ffffff" : "#000000",
-        transition: "all 0.3s ease",
-        boxSizing: "border-box",
-      }}
-    >
+<nav
+className={`navbar ${scrolled ? "transparent" : "white"}`}
+>
       {/* LOGO */}
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
-          navigate("/");
-        }}
-        style={{ fontWeight: 900, fontSize: "12px", letterSpacing: "1.5px", cursor: "pointer" }}
-      >
-        ESETHU ISIPHIWO
-      </div>
+<div
+className="logo"
+onClick={() => navigate("/")}
+>
+    ESETHU ISIPHIWO
+</div>
 
       {/* LINKS */}
-      <div style={{ display: "flex", gap: "40px" }}>
+      <div className="nav-links">
         {NAV_LINKS.map(({ label, path, sectionId }) => (
           <a
             key={label}
@@ -67,13 +50,7 @@ export default function Navbar() {
               e.stopPropagation();
               handleNavClick(path, sectionId);
             }}
-            style={{
-              cursor: "pointer",
-              color: "inherit",
-              textDecoration: "none",
-              letterSpacing: "1px",
-              fontSize: "12px",
-            }}
+className="nav-link"
           >
             {label}
           </a>
@@ -81,7 +58,39 @@ export default function Navbar() {
       </div>
 
       {/* HEART */}
-      <div style={{ fontSize: "20px", cursor: "pointer" }}>♡</div>
+<>
+  {/* Desktop Icon */}
+  <div className="nav-icons">
+    ♡
+  </div>
+
+  {/* Mobile Menu Button */}
+  <div
+    className="menu-btn"
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    {menuOpen ? "✕" : "☰"}
+  </div>
+</>
+{menuOpen && (
+  <div className="mobile-menu">
+
+    {NAV_LINKS.map(({ label, path, sectionId }) => (
+      <div
+        key={label}
+        className="mobile-link"
+        onClick={() => {
+          handleNavClick(path, sectionId);
+          setMenuOpen(false);
+        }}
+      >
+        {label}
+      </div>
+    ))}
+
+  </div>
+)}
     </nav>
+
   );
 }

@@ -1,33 +1,59 @@
 import { useState } from "react";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 
 const PAINTINGS = [
-  "VACATION",
-  "THE WORLD IS YOURS",
-  "OCEAN SIP",
-  "THE KITCHEN",
-  "Series: Becoming",
-  "Commission (custom)",
+  "A safe space",
+  "The world is yours",
+  "Time to self",
+  "The apartment",
+  // "Series: Becoming",
+  // "Commission (custom)",
 ];
 
 export default function Footer() {
-  const [form, setForm] = useState({ name: "", surname: "", email: "", painting: "" });
+  const [form, setForm] = useState({ name: "", surname: "", email: "", painting: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setSubmitted(false);
   };
 
-  const handleSubmit = () => {
-    if (!form.name || !form.surname || !form.email || !form.painting) {
-      alert("Please fill in all fields before sending.");
-      return;
-    }
-    console.log("Enquiry submitted:", form);
+ const handleSubmit = async () => {
+  if (!form.name || !form.surname || !form.email || !form.painting || !form.message) {
+    alert("Please fill in all fields before sending.");
+    return;
+  }
+
+  try {
+    await emailjs.send(
+      "service_01gaqjq",
+      "template_iuzvs85",
+      {
+    name: form.name,
+    surname: form.surname,
+    email: form.email,
+    painting: form.painting,
+    message: form.message,
+      },
+      "10qzybxmh6W3LgQPE"
+    );
+
     setSubmitted(true);
-    setForm({ name: "", surname: "", email: "", painting: "" });
-  };
+
+    setForm({
+      name: "",
+      surname: "",
+      email: "",
+      painting: "",
+      message: "",
+    });
+
+  } catch (error) {
+    console.error(error);
+    alert("Unable to send enquiry. Please try again.");
+  }
+};
 
   const inputStyle: React.CSSProperties = {
     fontFamily: "inherit",
@@ -112,6 +138,22 @@ export default function Footer() {
         <option value="" disabled>Select a work</option>
         {PAINTINGS.map((p) => <option key={p}>{p}</option>)}
       </select>
+    </div>
+    <div>
+      <label style={labelStyle}>Message</label>
+
+<textarea
+  name="message"
+  value={form.message}
+  onChange={handleChange}
+  placeholder="Tell me about your enquiry..."
+  style={{
+    ...inputStyle,
+    minHeight: "120px",
+    resize: "vertical",
+    gridColumn: "1 / -1",
+  }}
+/>
     </div>
   </div>
 
