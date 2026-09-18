@@ -1,53 +1,22 @@
 import footsteps from "../footsteps.png";
-import landingVideo from "../herovid.mp4";
-// import front from "../frontPage.png"; 
+import herovid from "../herovid.mov";
+import "./Hero.css";
 
 export default function Hero() {
   return (
-    <section
-      style={{
-        height: "120vh",
-        display: "flex"
-      }}
-    >
-      {/* VIDEO */}
-      <div style={{ width: "50%", overflow: "hidden" }}>
+    <section className="hero">
+      <div className="hero-video">
         <video
-          src={landingVideo}
+          src={herovid}
           autoPlay
           muted
           loop
           playsInline
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover"
-          }}
         />
       </div>
 
-      {/* IMAGE */}
-      {/* <div style={{ width: "50%", overflow: "hidden" }}>
-        <img
-          src={front}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover"
-          }}
-        />
-      </div> */}
-
-      {/* IMAGE */}
-      <div style={{ width: "50%", overflow: "hidden" }}>
-        <img
-          src={footsteps}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover"
-          }}
-        />
+      <div className="hero-image">
+        <img src={footsteps} alt="" />
       </div>
     </section>
   );
